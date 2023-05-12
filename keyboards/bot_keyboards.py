@@ -1,22 +1,5 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 
-from keyboards.bot_buttons import BUTTONS_DCT
-
-ADMIN_KBRD = InlineKeyboardMarkup([
-    [
-        BUTTONS_DCT['ADMIN_PANEL']
-    ],
-    [
-        BUTTONS_DCT['SEND_POST_TO_CHANNEL']
-    ],
-])
-
-CANCEL_SEND_POST_KBRD = InlineKeyboardMarkup([
-    [
-        BUTTONS_DCT['CANCEL_SEND_TO_CHANNEL']
-    ],
-])
-
 
 async def form_webapp_kbrd(form_link, btn_text):
     """
