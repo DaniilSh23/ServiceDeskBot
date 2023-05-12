@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardButton
 
-from settings.config import BASE_HOST_URL, LINK_FOR_POST_BUTTON
+from settings.config import BASE_HOST_URL
 
 BUTTONS_DCT = {
     'ADMIN_PANEL': InlineKeyboardButton(
@@ -14,9 +14,5 @@ BUTTONS_DCT = {
     'CANCEL_SEND_TO_CHANNEL': InlineKeyboardButton(
         text=f'⛔️Остановить пересылку в канал',
         callback_data='cancel_send_post_to_channel'
-    ),
-    'FOR_COPYED_POST_BTN': InlineKeyboardButton(
-        text=f'Оставить заявку',
-        url=LINK_FOR_POST_BUTTON
     ),
 }

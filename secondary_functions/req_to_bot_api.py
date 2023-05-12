@@ -1,6 +1,6 @@
 import aiohttp as aiohttp
 from loguru import logger
-from settings.config import USER_DATA_URL, VPN_BOT_SETTINGS_URL, CHECK_USER_URL
+from settings.config import CHECK_USER_URL
 
 
 async def post_for_check_user(tlg_username, tlg_id):
