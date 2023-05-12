@@ -17,12 +17,6 @@ CANCEL_SEND_POST_KBRD = InlineKeyboardMarkup([
     ],
 ])
 
-FOR_COPYED_POST_KBRD = InlineKeyboardMarkup([
-    [
-        BUTTONS_DCT['FOR_COPYED_POST_BTN']
-    ],
-])
-
 
 async def form_webapp_kbrd(form_link, btn_text):
     """
