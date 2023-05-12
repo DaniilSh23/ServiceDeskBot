@@ -1,0 +1,13 @@
+APScheduler==3.9.1.post1
+loguru==0.7.0
+pyaes==1.6.1
+Pyrogram==2.0.70
+PySocks==1.7.1
+python-dotenv==1.0.0
+pytz==2023.3
+pytz-deprecation-shim==0.1.0.post0
+six==1.16.0
+TgCrypto==1.2.5
+tzdata==2023.3
+tzlocal==4.3
+uvloop==0.17.0
