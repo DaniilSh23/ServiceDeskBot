@@ -5,7 +5,7 @@ from secondary_functions.req_to_bot_api import post_for_check_user
 from settings.config import FORM_LINK
 
 
-@Client.on_message(filters.command(['start']))
+@Client.on_message(filters.command(['start', 'menu']))
 async def start_handler(client, update):
     """
     Совершаем проверку наличия и активности юзера в Битриксе,
