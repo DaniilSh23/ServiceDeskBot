@@ -3,7 +3,7 @@ from pyrogram.types import Message, CallbackQuery
 from filters.main_filters import new_comment_filter, answer_comment_filter, cancel_comment_answer_filter, \
     send_comment_answer_filter
 from keyboards.bot_keyboards import form_webapp_kbrd, new_comment_kbrd, CANCEL_SEND_COMMENT_KBRD
-from secondary_functions.req_to_bot_api import post_for_check_user
+from secondary_functions.req_to_bot_api import post_for_check_user, post_for_send_comment
 from settings.config import FORM_LINK, ANSWER_COMMENT_STATES
 
 
@@ -93,7 +93,10 @@ async def send_comment_answer(client, update: Message):
     msg_id = ANSWER_COMMENT_STATES[update.from_user.id].split()[2]
     info_msg = await update.reply_text(text='📡 <b>Отправляю Ваш ответ в Битрикс...</b>')
 
-    # TODO: дописать отправку коммента в битру, через веб-приложение
+    send_comment_rslt = await post_for_send_comment(task_id=task_id, comment_text=update.text)
+    if not send_comment_rslt:
+        await info_msg.edit_text(f'❌📡 Не удалось отправить комментарий в Битрикс')
+        return
 
     comment_msg = await client.get_messages(
         chat_id=update.from_user.id,
@@ -102,3 +105,4 @@ async def send_comment_answer(client, update: Message):
     await comment_msg.edit_text(
         text=f'{comment_msg.text.split("==========")[0]}👌 <b>Ваш ответ: </b>{update.text}'
     )
+    await info_msg.edit_text(f'✅📡 Комментарий успешно отправлен в Битрикс')

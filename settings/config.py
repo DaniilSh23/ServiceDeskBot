@@ -11,6 +11,7 @@ FORM_LINK = os.environ.get('FORM_LINK', 'https://f5cc-78-30-211-223.ngrok-free.a
 # Константы для API Django проекта
 BASE_HOST_URL = os.environ.get('BASE_HOST_URL', 'http://127.0.0.1:8000/')
 CHECK_USER_URL = f'{BASE_HOST_URL}service_desk_bot/check_user/'
+SEND_COMMENT_URL = f'{BASE_HOST_URL}service_desk_bot/send_comment/'
 
 # Состояния
 ANSWER_COMMENT_STATES = dict()

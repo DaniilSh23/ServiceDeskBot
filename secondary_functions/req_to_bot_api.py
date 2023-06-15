@@ -1,6 +1,6 @@
 import aiohttp as aiohttp
 from loguru import logger
-from settings.config import CHECK_USER_URL
+from settings.config import CHECK_USER_URL, SEND_COMMENT_URL
 
 
 async def post_for_check_user(tlg_username, tlg_id):
@@ -35,3 +35,20 @@ async def post_for_check_user(tlg_username, tlg_id):
             else:
                 logger.warning(f'Вообще хз, что тут произошло ещё.')
                 return
+
+
+async def post_for_send_comment(task_id, comment_text):
+    """
+    Функция для отправки запроса к веб-приложению для записи коммента под задачей битры
+    """
+    data = {
+        'btrx_task_id': task_id,
+        'comment_text': comment_text,
+    }
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url=SEND_COMMENT_URL, data=data) as response:
+            if response.status == 200:
+                logger.success(f'Успешный запрос для записи коммента в битру')
+                return True
+            else:
+                logger.warning(f'Неудачный запрос для записи коммента в битру.')
